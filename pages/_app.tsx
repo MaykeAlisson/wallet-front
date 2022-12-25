@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import createEmotionCache from '../src/createEmotionCache';
+import { ColorModeProvider } from '../src/contexts/ColorModeContext';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -18,15 +19,15 @@ export default function MyApp(props: MyAppProps) {
   const theme = createTheme({})
   return (
     <CacheProvider value={emotionCache}>
-      <Head>
-        <title>Wallet</title>
-        <link rel="icon" href='/favicon.png'/>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <ColorModeProvider>
+        <Head>
+          <title>Wallet</title>
+          <link rel="icon" href='/favicon.png'/>
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+        </Head>
+          <CssBaseline />
+          <Component {...pageProps} />
+      </ColorModeProvider>
     </CacheProvider>
   );
 }
