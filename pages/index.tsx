@@ -1,7 +1,5 @@
+import Access from '../src/components/Access';
+
 export default function Home() {
-  return (
-    <>
-      <h1>wallet</h1>
-    </>
-  );
+  return <Access />;
 }
